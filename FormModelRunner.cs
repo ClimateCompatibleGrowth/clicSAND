@@ -60,7 +60,6 @@ namespace ModelRunner
                     //sb.Append(col.Text);
                     Console.Write(col.CachedValue + "\t");
                 }
-                //sb.AppendLine();
                 Console.WriteLine();
             }
 
