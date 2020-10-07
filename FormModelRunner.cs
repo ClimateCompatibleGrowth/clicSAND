@@ -47,39 +47,6 @@ namespace ModelRunner
 
         private bool ExtractDataFromXLS(string xlsFileName, string dataFileName)
         {
-            /*
-            try
-            {
-                
-                var Excel = new Excel.Application();
-                var workBook = Excel.Workbooks.Open(xlsFileName);
-                var ToDataFileSheet = workBook.Sheets[7];
-                var range = ToDataFileSheet.UsedRange;
-                //textBoxOutput.Text += range.AddressLocal() + "\r\n";
-
-                StringBuilder sb = new StringBuilder();
-
-                foreach (var row in range.Rows)
-                {
-                    foreach (var col in row.Columns)
-                    {
-                        //sb.Append(col.Text);
-                        Console.Write(col.Text);
-                    }
-                    //sb.AppendLine();
-                    Console.WriteLine();
-                }
-
-                textBoxOutput.Text = sb.ToString();
-
-
-                textBoxOutput.Text += range.Text;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-            */
             var wb = new XLWorkbook(xlsFileName);
             var sheet = wb.Worksheet("ToDataFile");
             var range = sheet.RangeUsed();
