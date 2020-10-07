@@ -51,8 +51,9 @@
             // 
             this.textBoxDataSource.Location = new System.Drawing.Point(108, 13);
             this.textBoxDataSource.Name = "textBoxDataSource";
-            this.textBoxDataSource.Size = new System.Drawing.Size(332, 20);
+            this.textBoxDataSource.Size = new System.Drawing.Size(716, 20);
             this.textBoxDataSource.TabIndex = 1;
+            this.textBoxDataSource.Text = "E:\\Nicki\\Downloads\\ModelRunner\\CCG - SAND Interface (clean) 2020 (ver8).xlsx";
             // 
             // labelModel
             // 
@@ -68,14 +69,14 @@
             this.textBoxModel.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxModel.Location = new System.Drawing.Point(108, 40);
             this.textBoxModel.Name = "textBoxModel";
-            this.textBoxModel.Size = new System.Drawing.Size(332, 20);
+            this.textBoxModel.Size = new System.Drawing.Size(716, 20);
             this.textBoxModel.TabIndex = 3;
             // 
             // textBoxResults
             // 
             this.textBoxResults.Location = new System.Drawing.Point(108, 67);
             this.textBoxResults.Name = "textBoxResults";
-            this.textBoxResults.Size = new System.Drawing.Size(332, 20);
+            this.textBoxResults.Size = new System.Drawing.Size(716, 20);
             this.textBoxResults.TabIndex = 4;
             // 
             // labelResults
@@ -104,14 +105,14 @@
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutput.Size = new System.Drawing.Size(528, 304);
+            this.textBoxOutput.Size = new System.Drawing.Size(811, 304);
             this.textBoxOutput.TabIndex = 7;
             // 
             // FormModelRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 449);
+            this.ClientSize = new System.Drawing.Size(836, 449);
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.buttonRun);
             this.Controls.Add(this.labelResults);
