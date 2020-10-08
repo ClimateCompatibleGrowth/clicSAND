@@ -24,4 +24,10 @@ jobs:
       run: nuget restore ModelRunner.sln
       
     - name: Build and Publish Web App
-      run: msbuild ModelRunner.sln
+      run: msbuild ModelRunner.sln /p:Configuration=Release
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: published_app
+        path: bin\Release
