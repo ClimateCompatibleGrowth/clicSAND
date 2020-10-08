@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using ClosedXML.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ModelRunner
 {
@@ -47,23 +47,21 @@ namespace ModelRunner
 
         private bool ExtractDataFromXLS(string xlsFileName, string dataFileName)
         {
-            var wb = new XLWorkbook(xlsFileName);
-            var sheet = wb.Worksheet("ToDataFile");
-            var range = sheet.RangeUsed();
-
-            foreach (var row in range.Rows())
+            try
             {
-                //Console.WriteLine(row.RowNumber());
-
-                foreach (var col in row.Cells())
-                {
-                    //sb.Append(col.Text);
-                    Console.Write(col.CachedValue + "\t");
-                }
-                Console.WriteLine();
+                var Excel = new Excel.Application();
+                var workBook = Excel.Workbooks.Open(xlsFileName);
+                Excel.Application.Visible = true;
+                Excel.Application.Run(String.Format("'{0}'!Module1.writefile", xlsFileName));
+                workBook.Saved = true;
+                workBook.Close();
+                Excel.Quit();
             }
-
-
+            catch (Exception exc)
+            {
+                textBoxOutput.Text += String.Format("Error extracting data:\r\n{0}", exc.Message);
+                return false;
+            }
             return true;
         }
         private bool RunGLPSOL(string dataFileName, string modelFileName, string lpFileName)
