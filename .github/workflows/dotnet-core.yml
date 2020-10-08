@@ -17,7 +17,7 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Framework
-      uses: auycro/netframework-action-template
+      uses: auycro/netframework-action-template@v0.0.2
     - name: Install dependencies
       run: dotnet restore
     - name: Build
