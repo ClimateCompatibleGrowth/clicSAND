@@ -1,5 +1,4 @@
 name: .NET Core
-
 on:
   push:
     branches: [ master ]
@@ -12,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: auycro/netframework-action-template@v0.0.2
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
