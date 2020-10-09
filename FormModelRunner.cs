@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace ModelRunner
 {
@@ -66,12 +67,12 @@ namespace ModelRunner
         }
         private bool RunGLPSOL(string dataFileName, string modelFileName, string lpFileName)
         {
-            return RunProcess("utils\\glpsol.exe", string.Format("--check -m {0} -d {1} --wlp {2}", modelFileName, dataFileName, lpFileName));
+            return RunProcess(String.Format(@"{0}\utils\glpsol.exe", Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)), string.Format("--check -m \"{0}\" -d \"{1}\" --wlp \"{2}\"", modelFileName, dataFileName, lpFileName));
         }
 
         private bool RunCBC(string inputFileName, string outputFileName)
         {
-            return RunProcess("utils\\cbc.exe", String.Format("{0} solve -solu {1}", inputFileName, outputFileName));
+            return RunProcess(String.Format(@"{0}\utils\cbc.exe", Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)), String.Format("\"{0}\" solve -solu \"{1}\"", inputFileName, outputFileName));
         }
 
         private bool RunProcess(string filename, string args)

@@ -71,6 +71,7 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(716, 20);
             this.textBoxModel.TabIndex = 3;
+            this.textBoxModel.Text = "E:\\Nicki\\Downloads\\ModelRunner\\model_new.txt";
             // 
             // textBoxResults
             // 
