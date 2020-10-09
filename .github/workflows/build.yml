@@ -1,0 +1,61 @@
+name: .NET Framework Build
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+     
+    - name: Restore NuGet Packages
+      run: nuget restore ModelRunner.sln
+      
+    - name: Build and Publish Web App
+      run: msbuild ModelRunner.sln /p:Configuration=Release
+      
+    - name: Zip the release
+      run: 7z a model_runner.zip bin\Release
+#    - name: Create Release
+#      id: create_release
+#      uses: actions/create-release@v1
+#      env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          draft: false
+#          prerelease: false
+#    - name: Upload Release Asset
+#      id: upload-release-asset 
+#      uses: actions/upload-release-asset@v1
+#      env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+#          asset_path: ./model_runner.zip
+#          asset_name: model_runner.zip
+#          asset_content_type: application/zip      
+#    - name: Add Nuget source
+#      run: dotnet nuget add source https://nuget.pkg.github.com/nickidw/index.json -n github -u nickidw -p GH_TOKEN [--store-password-in-clear-text]
+#    - name: Nuget Pack
+#      run: dotnet pack --configuration Release
+#    - name: Nuget Push
+#      run: dotnet nuget push "bin/Release/ModelRunner.1.0.0.nupkg" --source "github"
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: published_app
+        path: bin\Release
