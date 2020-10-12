@@ -54,7 +54,6 @@
             this.textBoxDataSource.Name = "textBoxDataSource";
             this.textBoxDataSource.Size = new System.Drawing.Size(681, 20);
             this.textBoxDataSource.TabIndex = 1;
-            this.textBoxDataSource.Text = "E:\\Nicki\\Downloads\\ModelRunner\\CCG - SAND Interface (clean) 2020 (ver8).xlsx";
             // 
             // labelModel
             // 
@@ -72,7 +71,6 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(681, 20);
             this.textBoxModel.TabIndex = 3;
-            this.textBoxModel.Text = "E:\\Nicki\\Downloads\\ModelRunner\\model_new.txt";
             // 
             // buttonRun
             // 
