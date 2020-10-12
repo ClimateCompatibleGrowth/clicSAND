@@ -15,6 +15,8 @@ namespace ModelRunner
 {
     public partial class FormModelRunner : Form
     {
+        string logFileName = null;
+
         public FormModelRunner()
         {
             InitializeComponent();
@@ -25,8 +27,17 @@ namespace ModelRunner
             string dataFileName = textBoxDataSource.Text + ".txt";
             string lpFileName = textBoxDataSource.Text + ".lp";
             string resultsFileName = textBoxDataSource.Text + ".results.txt";
+            logFileName = string.Format("{0}{1}.log.txt", textBoxDataSource.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
 
             textBoxOutput.Clear();
+
+            textBoxOutput.Text += new string('-', 150) + "\r\n";
+            textBoxOutput.Text += "Data file: " + dataFileName + "\r\n";
+            textBoxOutput.Text += "Model file: " + textBoxModel.Text+ "\r\n";
+            textBoxOutput.Text += "GLPSOL Output file: " + lpFileName + "\r\n";
+            textBoxOutput.Text += "Results file: " + resultsFileName+ "\r\n";
+            textBoxOutput.Text += "Log file: " + logFileName + "\r\n";
+            textBoxOutput.Text += new string('-', 150) + "\r\n";
 
             Cursor.Current = Cursors.WaitCursor;
 
@@ -43,6 +54,15 @@ namespace ModelRunner
             finally
             {
                 Cursor.Current = Cursors.Default;
+
+                try
+                {
+                    SaveLog(logFileName, textBoxOutput.Lines);
+                }
+                catch (Exception exc)
+                {
+                    textBoxOutput.Text += "Unable to save log: " + exc.Message + "\r\n";
+                }
             }
         }
 
@@ -111,6 +131,58 @@ namespace ModelRunner
                 textBoxOutput.Text += "Error: " + e.Message + "\r\n";
                 return false;
             }
+        }
+
+        private void buttonOpenXLS_Click(object sender, EventArgs e)
+        {
+            var filename = OpenFile("Excel spreadsheets|*.xls?");
+
+            if (!String.IsNullOrEmpty(filename))
+            {
+                textBoxDataSource.Text = filename;
+            }
+        }
+
+        private string OpenFile(string filter)
+        {
+            var fileDialog = new OpenFileDialog();
+            fileDialog.Filter = filter;
+            fileDialog.Multiselect = false;
+
+            DialogResult dialogResult = fileDialog.ShowDialog();
+
+            if (dialogResult.Equals(DialogResult.OK))
+            {
+                return fileDialog.FileName;
+            }
+            return null;
+        }
+
+        private void buttonOpenModel_Click(object sender, EventArgs e)
+        {
+            var filename = OpenFile("Text files|*.txt");
+
+            if (!String.IsNullOrEmpty(filename))
+            {
+                textBoxModel.Text = filename;
+            }
+        }
+
+        private void SaveLog(string logFileName, string[] lines)
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(logFileName))
+            {
+                foreach (string line in lines)
+                {
+                    file.WriteLine(line);
+                }
+            }
+        }
+
+        private void buttonOpenResults_Click(object sender, EventArgs e)
+        {
+            RunProcess(@"notepad.exe", logFileName);
         }
     }
 }
