@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Configuration;
 
 namespace ModelRunner
 {
@@ -43,9 +44,20 @@ namespace ModelRunner
 
             try
             {
-                ExtractDataFromXLS(textBoxDataSource.Text, dataFileName);
-                RunGLPSOL(dataFileName, textBoxModel.Text, lpFileName);
-                RunCBC(lpFileName, resultsFileName);
+                bool result = false;
+                result = ExtractDataFromXLS(textBoxDataSource.Text, dataFileName);
+                if (result)
+                {
+                    result = RunGLPSOL(dataFileName, textBoxModel.Text, lpFileName);
+                }
+                if (result)
+                {
+                    result = RunCBC(lpFileName, resultsFileName);
+                }
+                if (result)
+                {
+                    result = RunReporting(dataFileName, resultsFileName);
+                }
             }
             catch (Exception exc)
             {
@@ -95,6 +107,10 @@ namespace ModelRunner
             return RunProcess(String.Format(@"{0}\utils\cbc.exe", Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)), String.Format("\"{0}\" solve -solu \"{1}\"", inputFileName, outputFileName));
         }
 
+        private bool RunReporting(string dataFileName, string cbcOutputfileName)
+        {
+            return RunProcess(String.Format(@"{0}\python.exe", ConfigurationManager.AppSettings["pythonLocation"]), string.Format(@"{0} {1} {2}", ConfigurationManager.AppSettings["pythonScript"], dataFileName, cbcOutputfileName));
+        }
         private bool RunProcess(string filename, string args)
         {
             try
