@@ -56,7 +56,7 @@ namespace ModelRunner
                 }
                 if (result)
                 {
-                    result = RunReporting(dataFileName, resultsFileName);
+                    result = RunReporting(dataFileName, resultsFileName, txtYear.Text);
                 }
             }
             catch (Exception exc)
@@ -107,9 +107,9 @@ namespace ModelRunner
             return RunProcess(String.Format(@"{0}\utils\cbc.exe", Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)), String.Format("\"{0}\" solve -solu \"{1}\"", inputFileName, outputFileName));
         }
 
-        private bool RunReporting(string dataFileName, string cbcOutputfileName)
+        private bool RunReporting(string dataFileName, string cbcOutputfileName, string year)
         {
-            return RunProcess(String.Format(@"{0}\python.exe", ConfigurationManager.AppSettings["pythonLocation"]), string.Format(@"{0} {1} {2}", ConfigurationManager.AppSettings["pythonScript"], dataFileName, cbcOutputfileName));
+            return RunProcess(String.Format("\"{0}\"python.exe\"", ConfigurationManager.AppSettings["pythonLocation"]), string.Format("\"{0}\" \"{1}\" \"{2}\" {3}", ConfigurationManager.AppSettings["pythonScript"], dataFileName, cbcOutputfileName, year));
         }
         private bool RunProcess(string filename, string args)
         {

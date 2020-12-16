@@ -3,7 +3,7 @@ pd.set_option('mode.chained_assignment', None)
 
 import os, sys
 import subprocess
-from tkinter import filedialog
+#from tkinter import filedialog
 from tkinter import *
 from collections import defaultdict
 
@@ -19,15 +19,7 @@ import re
 
 ## Select input folder which contains data and results 
 
-def main(year):
-    root = Tk()
-    root.folder =  filedialog.askdirectory()
-    root.destroy()
-    
-    data_file = os.path.join(root.folder, 'data.txt')
-    results_file = os.path.join(root.folder, "cbcoutput.txt")
-
-    
+def main(data_file, results_file, year):
     ## Replace TABS with single whitespace. Remove trailing whitespaces.
     lines = []
     with open(data_file, 'r') as file_in:
@@ -40,10 +32,11 @@ def main(year):
     with open(data_file, 'w') as file_out:
         file_out.writelines(lines)
 
+    rootfolder = os.path.dirname(data_file)
 
     # Create \res\csv folder in current working directory if it doesn't already exist
     try:
-        os.makedirs(os.path.join(root.folder, 'res\csv'))
+        os.makedirs(os.path.join(rootfolder, 'res\csv'))
     except FileExistsError:
         pass    
 
@@ -195,12 +188,17 @@ def main(year):
 
     #Read CBC output file
     df = pd.read_csv(results_file, sep='\t')
-    #if str(df.iloc[0]).split(' ')[0] == "Infeasible":
-    #    print("INFEASIBLE RESULT!  CHECK YOUR PARAMETERS!")
-    #    exit(0) # Kill the kernel so we don't continue to run...
+
+    datasize = df.shape
+
+    print(datasize)
+    if len(datasize) == 0 or (len(datasize) == 1 and datasize[0] == 0) or (len(datasize) == 2 and datasize[0] == 0 or datasize[1] == 0):
+        print('Results file does not contain expected format')
+        return
 
     if str(df.iloc[0]).split(' ')[0] == "Optimal":
         print("Optimal Solution Found.")
+
     df.columns = ['temp']
     df['temp'] = df['temp'].str.lstrip(' *\n\t')
     df[['temp','value']] = df['temp'].str.split(')', expand=True)
@@ -243,7 +241,7 @@ def main(year):
         df_p = df_p[cols[each]] # Reorder dataframe to include 'value' as last column
         all_params[each] = pd.DataFrame(df_p) # Create a dataframe for each parameter
         df_p = df_p.rename(columns={'value':each})
-        df_p.to_csv(os.path.join(root.folder, 'res\csv', str(each) + '.csv'), index=None) # Print data for each paramter to a CSV file
+        df_p.to_csv(os.path.join(rootfolder, 'res\csv', str(each) + '.csv'), index=None) # Print data for each paramter to a CSV file
 
     year_split = []
     parsing = False
@@ -281,18 +279,18 @@ def main(year):
     #df_prod = df_prod.groupby(['r','t','f','y'])['ProductionByTechnology'].sum().reset_index()
     df_prod['ProductionByTechnology'] = df_prod['ProductionByTechnology'].astype(float).round(4)
 
-    df_prod.to_csv(os.path.join(root.folder, 'res\csv', 'ProductionByTechnology.csv'), index=None)
+    df_prod.to_csv(os.path.join(rootfolder, 'res\csv', 'ProductionByTechnology.csv'), index=None)
     all_params['ProductionByTechnology'] = df_prod.rename(columns={'ProductionByTechnology':'value'})
 
     
     ## Read ProductionByTechnology
-    df_hourly = pd.read_csv(os.path.join(root.folder,
+    df_hourly = pd.read_csv(os.path.join(rootfolder,
                                 'res',
                                 'csv',
                                 'ProductionByTechnology.csv'))
 
     ## Read TS definition file
-    seasons_months_days = pd.read_csv(os.path.join(root.folder,
+    seasons_months_days = pd.read_csv(os.path.join(rootfolder,
                                                 'seasons.csv'), 
                                     encoding='latin-1')
 
@@ -332,7 +330,7 @@ def main(year):
                     facet_col='MONTH',
                     )
         
-        #return fig.write_html(os.path.join(root.folder,"hourly_generation.html"))
+        #return fig.write_html(os.path.join(rootfolder,"hourly_generation.html"))
         return df
     
     df = df_hourly.loc[df_hourly.t.str.startswith('PWR')]
@@ -391,14 +389,15 @@ def main(year):
             fig['layout']['xaxis6']['title']['text']='Hours'
         
     #fig.show()
-    fig.write_html(os.path.join(root.folder,"hourly_generation.html"))
+    fig.write_html(os.path.join(rootfolder,"hourly_generation.html"))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        msg = "Usage: python {} YEAR"
+    if len(sys.argv) != 4:
+        msg = "Usage: python {} datafile cbcresultsfile YEAR"
         print(msg.format(sys.argv[0]))
         sys.exit(1)
     else:
-
-        year = sys.argv[1]
-        main(year)
+        datafile = sys.argv[1]
+        cbcresultsfile = sys.argv[2]
+        year = sys.argv[3]
+        main(datafile, cbcresultsfile, year)
