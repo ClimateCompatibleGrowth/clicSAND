@@ -37,6 +37,8 @@
             this.buttonOpenXLS = new System.Windows.Forms.Button();
             this.buttonOpenModel = new System.Windows.Forms.Button();
             this.buttonOpenResults = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtYear = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelDataSource
@@ -74,7 +76,7 @@
             // 
             // buttonRun
             // 
-            this.buttonRun.Location = new System.Drawing.Point(108, 66);
+            this.buttonRun.Location = new System.Drawing.Point(105, 95);
             this.buttonRun.Name = "buttonRun";
             this.buttonRun.Size = new System.Drawing.Size(100, 23);
             this.buttonRun.TabIndex = 6;
@@ -84,12 +86,12 @@
             // 
             // textBoxOutput
             // 
-            this.textBoxOutput.Location = new System.Drawing.Point(13, 95);
+            this.textBoxOutput.Location = new System.Drawing.Point(13, 124);
             this.textBoxOutput.MaxLength = 100000;
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutput.Size = new System.Drawing.Size(811, 342);
+            this.textBoxOutput.Size = new System.Drawing.Size(811, 313);
             this.textBoxOutput.TabIndex = 7;
             // 
             // buttonOpenXLS
@@ -114,7 +116,7 @@
             // 
             // buttonOpenResults
             // 
-            this.buttonOpenResults.Location = new System.Drawing.Point(214, 66);
+            this.buttonOpenResults.Location = new System.Drawing.Point(211, 95);
             this.buttonOpenResults.Name = "buttonOpenResults";
             this.buttonOpenResults.Size = new System.Drawing.Size(100, 23);
             this.buttonOpenResults.TabIndex = 10;
@@ -122,11 +124,30 @@
             this.buttonOpenResults.UseVisualStyleBackColor = true;
             this.buttonOpenResults.Click += new System.EventHandler(this.buttonOpenResults_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Year";
+            // 
+            // txtYear
+            // 
+            this.txtYear.Location = new System.Drawing.Point(108, 66);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(47, 20);
+            this.txtYear.TabIndex = 12;
+            this.txtYear.Text = "2020";
+            // 
             // FormModelRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 449);
+            this.Controls.Add(this.txtYear);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOpenResults);
             this.Controls.Add(this.buttonOpenModel);
             this.Controls.Add(this.buttonOpenXLS);
@@ -154,6 +175,8 @@
         private System.Windows.Forms.Button buttonOpenXLS;
         private System.Windows.Forms.Button buttonOpenModel;
         private System.Windows.Forms.Button buttonOpenResults;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtYear;
     }
 }
 
