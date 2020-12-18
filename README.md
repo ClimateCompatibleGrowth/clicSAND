@@ -14,6 +14,8 @@ cbcLocation - change to the path to the bin folder of cbc on your machine
 pythonLocation - change to where Python was installed
 pythonScript - change  to the location of CBC_results_ModelRunner.py (in PythonScripts subfolder of ModelRunner)
 
+run pip -r <path to Pythonscripts\requirements.txt> to install required python libraries
+
 Before you can run an Excel spreadsheet and model, you need to inject the contents of Module1.vba in the Macro folder into the Excel spreadsheet
 Open the spreadsheet
 Click Developer
