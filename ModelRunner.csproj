@@ -104,7 +104,9 @@
     <Content Include="Pythonscripts\CBC_results_ModelRunner.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pythonscripts\requirements.txt" />
+    <Content Include="Pythonscripts\requirements.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Utils\cbc.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
