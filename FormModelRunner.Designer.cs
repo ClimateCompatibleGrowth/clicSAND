@@ -37,8 +37,9 @@
             this.buttonOpenXLS = new System.Windows.Forms.Button();
             this.buttonOpenModel = new System.Windows.Forms.Button();
             this.buttonOpenResults = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtYear = new System.Windows.Forms.TextBox();
+            this.numericRatio = new System.Windows.Forms.NumericUpDown();
+            this.checkCBCRatio = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericRatio)).BeginInit();
             this.SuspendLayout();
             // 
             // labelDataSource
@@ -124,30 +125,49 @@
             this.buttonOpenResults.UseVisualStyleBackColor = true;
             this.buttonOpenResults.Click += new System.EventHandler(this.buttonOpenResults_Click);
             // 
-            // label1
+            // numericRatio
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Year";
+            this.numericRatio.DecimalPlaces = 2;
+            this.numericRatio.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericRatio.Location = new System.Drawing.Point(108, 68);
+            this.numericRatio.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            this.numericRatio.Name = "numericRatio";
+            this.numericRatio.Size = new System.Drawing.Size(45, 20);
+            this.numericRatio.TabIndex = 13;
+            this.numericRatio.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
             // 
-            // txtYear
+            // checkCBCRatio
             // 
-            this.txtYear.Location = new System.Drawing.Point(108, 66);
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(47, 20);
-            this.txtYear.TabIndex = 12;
-            this.txtYear.Text = "2020";
+            this.checkCBCRatio.AutoSize = true;
+            this.checkCBCRatio.Checked = true;
+            this.checkCBCRatio.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkCBCRatio.Location = new System.Drawing.Point(13, 70);
+            this.checkCBCRatio.Name = "checkCBCRatio";
+            this.checkCBCRatio.Size = new System.Drawing.Size(81, 17);
+            this.checkCBCRatio.TabIndex = 14;
+            this.checkCBCRatio.Text = "Ratio (CBC)";
+            this.checkCBCRatio.UseVisualStyleBackColor = true;
+            this.checkCBCRatio.CheckedChanged += new System.EventHandler(this.checkCBCRatio_CheckedChanged);
             // 
             // FormModelRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 449);
-            this.Controls.Add(this.txtYear);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.checkCBCRatio);
+            this.Controls.Add(this.numericRatio);
             this.Controls.Add(this.buttonOpenResults);
             this.Controls.Add(this.buttonOpenModel);
             this.Controls.Add(this.buttonOpenXLS);
@@ -159,6 +179,7 @@
             this.Controls.Add(this.labelDataSource);
             this.Name = "FormModelRunner";
             this.Text = "ModelRunner";
+            ((System.ComponentModel.ISupportInitialize)(this.numericRatio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,8 +196,8 @@
         private System.Windows.Forms.Button buttonOpenXLS;
         private System.Windows.Forms.Button buttonOpenModel;
         private System.Windows.Forms.Button buttonOpenResults;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtYear;
+        private System.Windows.Forms.NumericUpDown numericRatio;
+        private System.Windows.Forms.CheckBox checkCBCRatio;
     }
 }
 
