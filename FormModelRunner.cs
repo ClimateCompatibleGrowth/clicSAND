@@ -52,12 +52,12 @@ namespace ModelRunner
                 }
                 if (result)
                 {
-                    result = RunCBC(lpFileName, resultsFileName);
+                    result = RunCBC(lpFileName, resultsFileName, checkCBCRatio.Checked, numericRatio.Value.ToString());
                 }
-                if (result)
-                {
-                    result = RunReporting(dataFileName, resultsFileName, txtYear.Text);
-                }
+                //if (result)
+                //{
+                //    result = RunReporting(dataFileName, resultsFileName, txtYear.Text);
+                //}
             }
             catch (Exception exc)
             {
@@ -102,9 +102,19 @@ namespace ModelRunner
             return RunProcess(String.Format(@"{0}\utils\glpsol.exe", Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)), string.Format("--check -m \"{0}\" -d \"{1}\" --wlp \"{2}\"", modelFileName, dataFileName, lpFileName));
         }
 
-        private bool RunCBC(string inputFileName, string outputFileName)
+        private bool RunCBC(string inputFileName, string outputFileName, bool applyRatio, string ratio)
         {
-            return RunProcess(String.Format(@"{0}\cbc.exe", ConfigurationManager.AppSettings["cbcLocation"]), String.Format("\"{0}\" solve -solu \"{1}\"", inputFileName, outputFileName));
+            string cbcParams = null;
+
+            if (applyRatio)
+            {
+                cbcParams = String.Format("\"{0}\" ratio {1} solve -solu \"{2}\"", inputFileName, ratio, outputFileName);
+            }
+            else
+            {
+                cbcParams = String.Format("\"{0}\" solve -solu \"{1}\"", inputFileName, outputFileName);
+            }
+            return RunProcess(String.Format(@"{0}\cbc.exe", ConfigurationManager.AppSettings["cbcLocation"]), cbcParams);
         }
 
         private bool RunReporting(string dataFileName, string cbcOutputfileName, string year)
@@ -199,6 +209,11 @@ namespace ModelRunner
         private void buttonOpenResults_Click(object sender, EventArgs e)
         {
             RunProcess(@"notepad.exe", logFileName);
+        }
+
+        private void checkCBCRatio_CheckedChanged(object sender, EventArgs e)
+        {
+            numericRatio.Enabled = checkCBCRatio.Checked;
         }
     }
 }
