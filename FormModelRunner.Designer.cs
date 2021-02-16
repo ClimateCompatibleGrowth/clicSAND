@@ -39,6 +39,7 @@
             this.buttonOpenResults = new System.Windows.Forms.Button();
             this.numericRatio = new System.Windows.Forms.NumericUpDown();
             this.checkCBCRatio = new System.Windows.Forms.CheckBox();
+            this.buttonSaveTemplates = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericRatio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,11 +162,22 @@
             this.checkCBCRatio.UseVisualStyleBackColor = true;
             this.checkCBCRatio.CheckedChanged += new System.EventHandler(this.checkCBCRatio_CheckedChanged);
             // 
+            // buttonSaveTemplates
+            // 
+            this.buttonSaveTemplates.Location = new System.Drawing.Point(317, 95);
+            this.buttonSaveTemplates.Name = "buttonSaveTemplates";
+            this.buttonSaveTemplates.Size = new System.Drawing.Size(120, 23);
+            this.buttonSaveTemplates.TabIndex = 15;
+            this.buttonSaveTemplates.Text = "Export Templates ...";
+            this.buttonSaveTemplates.UseVisualStyleBackColor = true;
+            this.buttonSaveTemplates.Click += new System.EventHandler(this.buttonSaveTemplates_Click);
+            // 
             // FormModelRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 449);
+            this.Controls.Add(this.buttonSaveTemplates);
             this.Controls.Add(this.checkCBCRatio);
             this.Controls.Add(this.numericRatio);
             this.Controls.Add(this.buttonOpenResults);
@@ -198,6 +210,7 @@
         private System.Windows.Forms.Button buttonOpenResults;
         private System.Windows.Forms.NumericUpDown numericRatio;
         private System.Windows.Forms.CheckBox checkCBCRatio;
+        private System.Windows.Forms.Button buttonSaveTemplates;
     }
 }
 
