@@ -215,5 +215,29 @@ namespace ModelRunner
         {
             numericRatio.Enabled = checkCBCRatio.Checked;
         }
+
+        private void buttonSaveTemplates_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            folderDialog.Description = "Extract templates";
+            folderDialog.ShowNewFolderButton = true;
+            DialogResult result = folderDialog.ShowDialog(this);
+
+            if (result.Equals(DialogResult.OK))
+            {
+                try
+                {
+                    foreach (string fileName in Directory.GetFiles(@"Templates"))
+                    {
+                        File.Copy(fileName, Path.Combine(folderDialog.SelectedPath, Path.GetFileName(fileName)), true);
+                    }
+                    MessageBox.Show(String.Format("Templates exported to {0}", folderDialog.SelectedPath));
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(String.Format("Failed to copy files: \r\n{0}", exc.Message));
+                }
+            }
+        }
     }
 }
