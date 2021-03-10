@@ -16,7 +16,7 @@
     "funding": "Climate Compatible Growth Program (#CCG) of the UK's Foreign Development and Commonwealth Office (FCDO). The views expressed in this paper do not necessarily reflect the UK government’s official policies.",
     "developmentStatus": "active",
     "isPartOf": "https://www.linkedin.com/company/climate-compatible-growth-ccg/",
-    "referencePublication": "http://doi.org/10.5281/zenodo.4593220",
+    "referencePublication": "http://doi.org/10.5281/zenodo.4593100",
     "funder": {
         "@type": "Organization",
         "name": "UK's Foreign Development and Commonwealth Office (FCDO)"
