@@ -1,4 +1,4 @@
-# clicSAND [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4593220.svg)](https://doi.org/10.5281/zenodo.4593220)
+# clicSAND [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4593100.svg)](https://doi.org/10.5281/zenodo.4593100)
 
 
 Software to automate extraction of input data from spreadsheet, execute glpsol, execute cbc and produce results
