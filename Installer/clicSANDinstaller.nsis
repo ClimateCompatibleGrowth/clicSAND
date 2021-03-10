@@ -27,9 +27,9 @@ Section "Uninstall"
 	RMDir /r $INSTDIR\CBC
 	RMDir /r $INSTDIR\Utils
 	RMDir /r $INSTDIR\Templates
-	Delete $INSTDIR\ModelRunner.exe
-	Delete $INSTDIR\ModelRunner.exe.config
-	Delete $INSTDIR\ModelRunner.pdb
+	Delete $INSTDIR\clicSAND.exe
+	Delete $INSTDIR\clicSAND.exe.config
+	Delete $INSTDIR\clicSAND.pdb
 	Delete $INSTDIR\System.IO.Packaging.dll
 	Delete $INSTDIR\System.IO.Packaging.xml
 	Delete $INSTDIR\uninstaller.exe

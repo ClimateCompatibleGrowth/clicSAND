@@ -190,7 +190,7 @@
             this.Controls.Add(this.textBoxDataSource);
             this.Controls.Add(this.labelDataSource);
             this.Name = "FormModelRunner";
-            this.Text = "ModelRunner";
+            this.Text = "clicSAND";
             ((System.ComponentModel.ISupportInitialize)(this.numericRatio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
