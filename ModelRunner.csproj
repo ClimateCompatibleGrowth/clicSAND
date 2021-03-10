@@ -7,7 +7,7 @@
     <ProjectGuid>{2C177B2C-B9DE-41C5-BEEC-C5F8857B9176}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ModelRunner</RootNamespace>
-    <AssemblyName>ModelRunner</AssemblyName>
+    <AssemblyName>clicSAND</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
