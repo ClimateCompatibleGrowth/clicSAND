@@ -1,5 +1,5 @@
-Name clickSAND
-InstallDir "C:\Program Files\clickSAND"
+Name clicSAND
+InstallDir "C:\Program Files\clicSAND"
 LicenseData license.txt
 Page license
 Page directory
