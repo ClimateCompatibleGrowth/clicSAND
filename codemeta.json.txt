@@ -47,7 +47,11 @@
             "@type": "Person",
             "givenName": "Carla",
             "familyName": "Cannone",
-            "email": "carla.cannone2@gmail.com"
+            "email": "carla.cannone2@gmail.com",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Climate Compatible Growth Program (#CCG)"
+            }
         },
         {
             "@type": "Person",
@@ -63,7 +67,11 @@
             "@type": "Person",
             "givenName": "Lucy",
             "familyName": "Allington",
-            "email": "lallington9@gmail.com"
+            "email": "lallington9@gmail.com",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Climate Compatible Growth Program (#CCG)"
+            }
         },
         {
             "@type": "Person",
@@ -75,7 +83,11 @@
             "@type": "Person",
             "givenName": "Abhishek",
             "familyName": "Shivakumar",
-            "email": "abhishek0208@gmail.com"
+            "email": "abhishek0208@gmail.com",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Climate Compatible Growth Program (#CCG)"
+            }
         },
         {
             "@type": "Person",
