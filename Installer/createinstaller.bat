@@ -1,1 +1,1 @@
-makensis modelrunner.nsis
+makensis clicSANDinstaller.nsis
