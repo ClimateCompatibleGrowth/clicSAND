@@ -31,7 +31,7 @@ jobs:
       run: msbuild ModelRunner.sln /p:Configuration=Release
       
     - name: Zip the release
-      run: 7z a model_runner.zip bin\Release
+      run: 7z a clicSANDinstaller.zip Installer\clicSANDinstaller.exe
 #    - name: Create Release
 #      id: create_release
 #      uses: actions/create-release@v1
