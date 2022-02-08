@@ -154,7 +154,7 @@
             // 
             // buttonSaveTemplates
             // 
-            this.buttonSaveTemplates.Location = new System.Drawing.Point(317, 95);
+            this.buttonSaveTemplates.Location = new System.Drawing.Point(211, 95);
             this.buttonSaveTemplates.Name = "buttonSaveTemplates";
             this.buttonSaveTemplates.Size = new System.Drawing.Size(120, 23);
             this.buttonSaveTemplates.TabIndex = 15;
