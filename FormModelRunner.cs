@@ -245,11 +245,6 @@ namespace ModelRunner
             }
         }
 
-        private void buttonOpenResults_Click(object sender, EventArgs e)
-        {
-            RunProcess(@"notepad.exe", logFileName);
-        }
-
         private void checkCBCRatio_CheckedChanged(object sender, EventArgs e)
         {
             numericRatio.Enabled = checkCBCRatio.Checked;
