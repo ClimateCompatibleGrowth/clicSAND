@@ -115,17 +115,7 @@
             this.buttonOpenModel.Text = "...";
             this.buttonOpenModel.UseVisualStyleBackColor = true;
             this.buttonOpenModel.Click += new System.EventHandler(this.buttonOpenModel_Click);
-            // 
-            // buttonOpenResults
-            // 
-            this.buttonOpenResults.Location = new System.Drawing.Point(211, 95);
-            this.buttonOpenResults.Name = "buttonOpenResults";
-            this.buttonOpenResults.Size = new System.Drawing.Size(100, 23);
-            this.buttonOpenResults.TabIndex = 10;
-            this.buttonOpenResults.Text = "Open Log";
-            this.buttonOpenResults.UseVisualStyleBackColor = true;
-            this.buttonOpenResults.Click += new System.EventHandler(this.buttonOpenResults_Click);
-            // 
+
             // numericRatio
             // 
             this.numericRatio.DecimalPlaces = 2;
