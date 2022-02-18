@@ -123,7 +123,7 @@ namespace ModelRunner
             startInfo.FileName = path;
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             string input_path = Path.GetDirectoryName(input);
-            startInfo.Arguments = "\"" + input + "\"" + " " + input_path;
+            startInfo.Arguments = "\"" + input + "\"" + " " + "\"" + input_path + "\"";
 
             try
             {
