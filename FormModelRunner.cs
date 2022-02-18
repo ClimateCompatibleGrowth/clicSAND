@@ -68,7 +68,7 @@ namespace ModelRunner
             try
             {
                 textBoxOutput.Text += "Converting results for visualisation";
-                ConvertResults(resultsFileName, resultsFileName);
+                ConvertResults(resultsFileName);
             }
             catch (Exception exc)
             {
@@ -109,14 +109,15 @@ namespace ModelRunner
             return true;
         }
 
-        private void ConvertResults(string input, string output_dir)
+        private void ConvertResults(string input)
         {
             // Use ProcessStartInfo class
             ProcessStartInfo startInfo = new ProcessStartInfo();
             // startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = true;
             startInfo.UseShellExecute = false;
-            string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"converter/dist/python_converter");
+            string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"Converter\dist\python_converter.exe");
+             textBoxOutput.Text += "Running converter from: " + path;
             startInfo.FileName = path;
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             string input_path = Path.GetDirectoryName(input);

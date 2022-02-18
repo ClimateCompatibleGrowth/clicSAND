@@ -6,7 +6,7 @@ if __name__ == "__main__":
 
     input = sys.argv[1]
     output_dir = sys.argv[2]
-    output_filename = input.split("/")[-1] + ".processed_results"
+    output_filename = input.split("\\")[-1] + ".processed_results"
 
     columns = [
         "index",
@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
     osemosys_cleaned = osemosys_cleaned.drop("index", axis=1)
 
-    output_directory = "{}/{}.csv".format(output_dir, output_filename)
+    output_directory = "{}\{}.csv".format(output_dir, output_filename)
     osemosys_cleaned.to_csv(
         output_directory,
         index=False,
