@@ -115,18 +115,26 @@ namespace ModelRunner
             ProcessStartInfo startInfo = new ProcessStartInfo();
             // startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.CreateNoWindow = true;
             startInfo.UseShellExecute = false;
             string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"Converter\dist\python_converter.exe");
-             textBoxOutput.Text += "Running converter from: " + path;
+            textBoxOutput.Text += "Running converter from: " + path;
             startInfo.FileName = path;
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             string input_path = Path.GetDirectoryName(input);
-            startInfo.Arguments = input + " " + input_path;
+            startInfo.Arguments = "\"" + input + "\"" + " " + input_path;
 
             try
             {
                 using (Process exeProcess = Process.Start(startInfo))
                 {
+                    string output = exeProcess.StandardOutput.ReadToEnd();
+                    Console.WriteLine(output);
+                    textBoxOutput.Text += output;
+                    string err = exeProcess.StandardError.ReadToEnd();
+                    Console.WriteLine(err);
+                    textBoxOutput.Text += err;
                     exeProcess.WaitForExit();
                 }
             }
