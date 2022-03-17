@@ -33,6 +33,7 @@
             this.labelModel = new System.Windows.Forms.Label();
             this.textBoxModel = new System.Windows.Forms.TextBox();
             this.buttonRun = new System.Windows.Forms.Button();
+            this.buttonCloud = new System.Windows.Forms.Button();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.buttonOpenXLS = new System.Windows.Forms.Button();
             this.buttonOpenModel = new System.Windows.Forms.Button();
@@ -162,6 +163,16 @@
             this.buttonSaveTemplates.UseVisualStyleBackColor = true;
             this.buttonSaveTemplates.Click += new System.EventHandler(this.buttonSaveTemplates_Click);
             // 
+            // Cloud generator
+            // 
+            this.buttonCloud.Location = new System.Drawing.Point(336, 95);
+            this.buttonCloud.Name = "buttonCloud";
+            this.buttonCloud.Size = new System.Drawing.Size(200, 23);
+            this.buttonCloud.TabIndex = 16;
+            this.buttonCloud.Text = "Generate OSeMOSYS Cloud Input Data";
+            this.buttonCloud.UseVisualStyleBackColor = true;
+            this.buttonCloud.Click += new System.EventHandler(this.buttonCloud_Click);
+            // 
             // FormModelRunner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +190,7 @@
             this.Controls.Add(this.labelModel);
             this.Controls.Add(this.textBoxDataSource);
             this.Controls.Add(this.labelDataSource);
+            this.Controls.Add(this.buttonCloud);
             this.Name = "FormModelRunner";
             this.Text = "clicSAND";
             ((System.ComponentModel.ISupportInitialize)(this.numericRatio)).EndInit();
@@ -194,6 +206,7 @@
         private System.Windows.Forms.Label labelModel;
         private System.Windows.Forms.TextBox textBoxModel;
         private System.Windows.Forms.Button buttonRun;
+        private System.Windows.Forms.Button buttonCloud;
         private System.Windows.Forms.TextBox textBoxOutput;
         private System.Windows.Forms.Button buttonOpenXLS;
         private System.Windows.Forms.Button buttonOpenModel;
