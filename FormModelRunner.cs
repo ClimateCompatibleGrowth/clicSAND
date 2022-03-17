@@ -48,6 +48,7 @@ namespace ModelRunner
             {
                 bool result = false;
                 result = ExtractDataFromXLS(textBoxDataSource.Text, dataFileName);
+
                 if (result)
                 {
                     result = RunGLPSOL(dataFileName, textBoxModel.Text, lpFileName);
@@ -67,7 +68,7 @@ namespace ModelRunner
             }
             try
             {
-                textBoxOutput.Text += "Converting results for visualisation";
+                textBoxOutput.Text += "Converting results for visualisation \r\n";
                 ConvertResults(resultsFileName);
             }
             catch (Exception exc)
@@ -89,6 +90,47 @@ namespace ModelRunner
             }
         }
 
+
+        private void buttonCloud_Click(object sender, EventArgs e)
+        {
+            string dataFileName = textBoxDataSource.Text + ".txt";
+            string resFile = dataFileName + ".cloud_data.txt";
+            logFileName = string.Format("{0}{1}.log.txt", textBoxDataSource.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
+
+            textBoxOutput.Clear();
+
+            textBoxOutput.Text += new string('-', 150) + "\r\n";
+            textBoxOutput.Text += "Data file: " + dataFileName + "\r\n";
+            textBoxOutput.Text += "OseMOSYS Cloud data input file: " + resFile + "\r\n";
+            textBoxOutput.Text += new string('-', 150) + "\r\n";
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                bool result = false;
+                result = ExtractDataFromXLS(textBoxDataSource.Text, dataFileName);
+
+                if (result){
+                    try
+                    {
+                        textBoxOutput.Text += "Generating OSeMOSYS cloud input data \r\n";
+                        CreateRESOutput(dataFileName, resFile);
+                    }
+                    catch (Exception exc)
+                    {
+                        textBoxOutput.Text += "Unable to convert generate OSeMOSYS cloud input data: " + exc.Message + "\r\n";
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                textBoxOutput.Text += "Unable to extract data from XLS: " + exc.Message + "\r\n";
+            }
+            textBoxOutput.Text += "Generated OSeMOSYS cloud input data \r\n";
+        }
+
+
         private bool ExtractDataFromXLS(string xlsFileName, string dataFileName)
         {
             try
@@ -109,11 +151,34 @@ namespace ModelRunner
             return true;
         }
 
+        private void CreateRESOutput(string input, string output_dir)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.RedirectStandardOutput = true;
+            startInfo.UseShellExecute = false;
+            string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"sand_osemosys_processing\dist\sand_filter_v2.exe");
+            startInfo.FileName = path;
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            string input_path = Path.GetDirectoryName(input);
+
+            startInfo.Arguments = "\"" + input + "\"" + " " + "\"" + output_dir + "\"";
+
+            try
+            {
+                using (Process exeProcess = Process.Start(startInfo))
+                {
+                    exeProcess.WaitForExit();
+                }
+            }
+            catch (Exception exc)
+            {
+                textBoxOutput.Text += "Unable to run RES converter: " + exc.Message + "\r\n";
+            }
+        }
+
         private void ConvertResults(string input)
         {
-            // Use ProcessStartInfo class
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            // startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = true;
             startInfo.RedirectStandardError = true;
             startInfo.CreateNoWindow = true;
