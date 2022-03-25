@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Insaller as it is too large to be hosted on github
+Installer/clicSANDinstaller.exe
