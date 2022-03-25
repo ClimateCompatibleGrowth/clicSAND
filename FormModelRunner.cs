@@ -94,7 +94,7 @@ namespace ModelRunner
         private void buttonCloud_Click(object sender, EventArgs e)
         {
             string dataFileName = textBoxDataSource.Text + ".txt";
-            string resFile = dataFileName + ".cloud_data.txt";
+            string resFile = dataFileName.Remove(dataFileName.Length - 9) + ".cloud_data.txt";
             logFileName = string.Format("{0}{1}.log.txt", textBoxDataSource.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
 
             textBoxOutput.Clear();
