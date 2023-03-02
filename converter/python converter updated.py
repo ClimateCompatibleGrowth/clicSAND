@@ -1,3 +1,5 @@
+# Code is updated
+
 import pandas as pd
 import numpy as np
 import sys
@@ -5,8 +7,8 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    input = sys.argv[1]
-    output_dir = sys.argv[2]
+    input = sys.argv[0] # changed the argv[1] to argv[0]
+    output_dir = sys.argv[0] # changed the argv[1] to argv[0]
 
     output_filename = input.split("\\")[-1] + ".processed_results.csv"
     output_dir = r"{}".format(output_dir)
@@ -15,7 +17,7 @@ if __name__ == "__main__":
     columns = [
         "index",
         "Variable",
-        "Dim1",cd 
+        "Dim1",
         "Dim2",
         "Dim3",
         "Dim4",
