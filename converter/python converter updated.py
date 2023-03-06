@@ -1,5 +1,5 @@
 # Code is updated
-
+# Date: 6th March 2023
 import pandas as pd
 import numpy as np
 import sys
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     output_directory = Path(output_dir) / Path(output_filename)
 
     # output_directory = '"{}"'.format(output_directory)
-    osemosys_cleaned.to_csv(
-        output_directory,
-        index=False,
+    osemosys_clean.to_csv(r'C:\Users\biswa\Downloads\clicSAND\converter\output_directory.csv'
+        ,
+        index=False,encoding='utf-8'
     )
