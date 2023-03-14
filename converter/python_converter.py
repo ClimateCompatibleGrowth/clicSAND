@@ -5,8 +5,8 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    input = sys.argv[1]
-    output_dir = sys.argv[2]
+    input = sys.argv[0]
+    output_dir = sys.argv[0]
 
     output_filename = input.split("\\")[-1] + ".processed_results.csv"
     output_dir = r"{}".format(output_dir)
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     columns = [
         "index",
         "Variable",
-        "Dim1",cd 
+        "Dim1",
         "Dim2",
         "Dim3",
         "Dim4",
@@ -56,7 +56,4 @@ if __name__ == "__main__":
     output_directory = Path(output_dir) / Path(output_filename)
 
     # output_directory = '"{}"'.format(output_directory)
-    osemosys_cleaned.to_csv(
-        output_directory,
-        index=False,
-    )
+    osemosys_cleaned.to_csv(output_directory,index=False,)
