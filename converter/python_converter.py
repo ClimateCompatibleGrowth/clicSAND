@@ -5,8 +5,8 @@ from pathlib import Path
 
 if __name__ == "__main__":
 
-    input = sys.argv[0]
-    output_dir = sys.argv[0]
+    input = sys.argv[1]
+    output_dir = sys.argv[1]
 
     output_filename = input.split("\\")[-1] + ".processed_results.csv"
     output_dir = r"{}".format(output_dir)
