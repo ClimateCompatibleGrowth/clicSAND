@@ -1,1 +1,0 @@
-makensis clicSANDinstaller.nsis

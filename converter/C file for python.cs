@@ -24,7 +24,7 @@ namespace ModelRunner
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
-        {
+          {
             string dataFileName = textBoxDataSource.Text + ".txt";
             string lpFileName = textBoxDataSource.Text + ".lp";
             string resultsFileName = textBoxDataSource.Text + ".results.txt";

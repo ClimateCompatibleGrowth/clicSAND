@@ -70,6 +70,9 @@ def main(data_file, results_file, year):
     storage_from = []
     emission_table = []
     data_format = 'momani'
+    datafile = sys.argv[0]
+    cbcresultsfile = sys.argv[0]
+    year = sys.argv[0]
 
     param_check = ['OutputActivityRatio', 'InputActivityRatio', 'TechnologyToStorage', 'TechnologyFromStorage', 'EmissionActivityRatio']
 

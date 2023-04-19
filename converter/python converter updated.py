@@ -58,7 +58,4 @@ if __name__ == "__main__":
     output_directory = Path(output_dir) / Path(output_filename)
 
     # output_directory = '"{}"'.format(output_directory)
-    osemosys_clean.to_csv(r'C:\Users\biswa\Downloads\clicSAND\converter\output_directory.csv'
-        ,
-        index=False,encoding='utf-8'
-    )
+    osemosys_clean.to_csv (output_directory,index=False,)
