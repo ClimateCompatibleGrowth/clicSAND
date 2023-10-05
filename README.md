@@ -1,12 +1,13 @@
 # clicSAND [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4593100.svg)](https://doi.org/10.5281/zenodo.4593100)
 
-
-Software to automate extraction of input data from spreadsheet, execute glpsol, execute cbc and produce results
+- A one click installation package with all the necessary components of the software is avalilable for free to download from GitHub
+- The software automates the extraction of input data from spreadsheet, execute glpsol, execute cbc and produce results
+- [The manual of the software and the two solvers can be found in zenodo in the link ](https://zenodo.org/record/4668816#.Yd2lHf7MJPY)
 
 ## Licenses
 This software is licensed under the MIT License, details in licences/license.txt
-CBC is licensed under the Eclipse Public License - v 2.0, details in licences/CBC_LICENSE.txt
-glpk is licensed under the GNU Public License v3.0, details in licences/glpk_license.txt
+- CBC is licensed under the Eclipse Public License - v 2.0, details in licences/CBC_LICENSE.txt
+- glpk is licensed under the GNU Public License v3.0, details in licences/glpk_license.txt
 
 ## Prerequisites:
 - .Net Runtime (the application was compiled against 4.7.2) https://dotnet.microsoft.com/download/dotnet-framework/net472
@@ -24,3 +25,6 @@ Execute createinstaller.bat from the Installer folder
 - Click Run
 - Wait!
 
+
+
+[def]: https://zenodo.org/record/4668816#.Yd2lHf7MJPY
