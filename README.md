@@ -2,7 +2,7 @@
 
 - A one click installation package with all the necessary components of the software is avalilable for free to download from GitHub
 - The software automates the extraction of input data from spreadsheet, execute glpsol, execute cbc and produce results
-- The manual of the software and the two solvers can be found in zenodo in the [link] (https://zenodo.org/record/4668816#.Yd2lHf7MJPY)
+- The manual of the software and the two solvers can be found in zenodo in the following link (https://zenodo.org/record/4668816#.Yd2lHf7MJPY)
 
 ## Licenses
 This software is licensed under the MIT License, details in licences/license.txt
